@@ -18,7 +18,16 @@ public class PrettyDirectionsTest {
         assertEquals("""
                 1 Schritte Richtung 0 Grad.
                 3 Schritte Richtung 0 Grad.
-                2 Schritte Richtung 45 Grad.""", output);
+                2 Schritte Richtung 45 Grad.""".replace("\n", System.lineSeparator()), output);
+    }
+
+    @Test
+    void testIsOnWayTestEmpty() {
+        Stream<OneWay> ways = Stream.of();
+
+        String output = PinguTrip.prettyDirections(ways);
+
+        assertEquals("", output);
     }
 
     @Test
